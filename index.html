@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Convert files locally in your browser. Your files never leave your device.">
+    <title>Local Convert — Private file conversion</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Local Convert home">
+        <span class="brand-mark" aria-hidden="true">↗</span>
+        <span>Local Convert</span>
+      </a>
+      <div class="privacy-badge"><span aria-hidden="true">●</span> 100% local</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Private by default</p>
+        <h1>Convert files without<br><em>uploading them.</em></h1>
+        <p class="hero-copy">A fast, simple file converter that runs entirely in your browser. Your files stay on your device.</p>
+      </section>
+
+      <section class="workspace" aria-labelledby="converter-title">
+        <h2 id="converter-title" class="sr-only">File converter</h2>
+        <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Choose files to convert">
+          <div class="upload-icon" aria-hidden="true">↑</div>
+          <h3>Drop files here</h3>
+          <p>or <label class="file-label" for="file-input">browse your device</label></p>
+          <input id="file-input" type="file" multiple hidden>
+          <p class="file-hint">No uploads · No accounts · No tracking</p>
+        </div>
+
+        <div id="queue" class="queue" hidden>
+          <div class="queue-header">
+            <h3>Ready to convert <span id="file-count"></span></h3>
+            <button id="clear-button" class="text-button" type="button">Clear all</button>
+          </div>
+          <div id="file-list" class="file-list"></div>
+          <div class="action-row">
+            <label class="format-picker">
+              <span>Convert to</span>
+              <select id="format-select" aria-label="Output format"></select>
+            </label>
+            <button id="convert-button" class="primary-button" type="button">Convert files <span aria-hidden="true">→</span></button>
+          </div>
+          <p id="status" class="status" role="status"></p>
+        </div>
+      </section>
+
+      <section class="supported" aria-labelledby="supported-title">
+        <div>
+          <p class="eyebrow">Supported formats</p>
+          <h2 id="supported-title">The essentials, covered.</h2>
+        </div>
+        <div class="format-grid">
+          <div><strong>Text</strong><span>TXT · MD · CSV · JSON</span></div>
+          <div><strong>Images</strong><span>PNG · JPEG · WEBP</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>Built for your privacy.</span><span>Works offline after loading.</span></footer>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "offline-file-converter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A privacy-first file converter that runs entirely in the browser.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/converter.js && node --check src/app.js"
+  },
+  "keywords": [
+    "offline",
+    "file-converter",
+    "privacy"
+  ],
+  "license": "MIT"
+}
