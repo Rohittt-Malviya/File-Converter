@@ -1,31 +1,62 @@
-# Local Convert
+# Offline File Converter
 
-Local Convert is a privacy-first file converter that runs entirely in the browser. Files are read, converted, and downloaded locally; there is no server, account, analytics, or upload step.
+Offline File Converter is a privacy-first conversion toolkit with a zero-dependency browser app, a reusable Python engine, a PyQt6 desktop client, and a Flutter mobile client. Source files are processed locally and are never uploaded.
 
-## Supported conversions
+## Features
 
-- Text family: TXT, Markdown, CSV, and JSON
-- Image family: PNG, JPEG, and WebP
-- CSV files can be converted to structured JSON records
-- Images use the browser's native Canvas APIs
+- Browser conversion for text-family and image-family formats
+- Python conversion engine for PDF, images, documents, spreadsheets, and text
+- PyQt6 desktop dashboard with drag-and-drop, progress, history, themes, and safe output selection
+- Flutter mobile project for local file selection, image/PDF workflows, sharing, and history
+- Unit tests, CI, packaging scripts, and deployment documentation
 
-## Run locally
+## Supported formats
 
-Any static web server works. For example:
+The browser app supports TXT, Markdown, CSV, JSON, PNG, JPEG, and WebP. The Python engine additionally supports BMP, TIFF, PDF, DOCX, XLSX, and HTML workflows. See `docs/CONVERSION_SUPPORT.md` for optional dependencies and limitations.
+
+## Run
+
+### Browser
 
 ```sh
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080`. The app does not require a build step or runtime dependency.
+Open `http://localhost:8080`.
 
-## Development
+### Desktop
 
 ```sh
+./scripts/setup.sh
+python -m desktop.frontend.main
+```
+
+On Windows, use `scripts/setup.bat` and `python -m desktop.frontend.main`.
+
+### Mobile
+
+Install Flutter, then:
+
+```sh
+cd mobile/converter_mobile
+flutter pub get
+flutter run
+```
+
+## Test and build
+
+```sh
+python -m pytest -q
 npm test
 npm run check
 ```
 
-## Privacy and security
+Use `scripts/build_desktop.sh` or `.bat` for PyInstaller packaging and `scripts/build_mobile.sh` for Android APK/AAB builds. iOS requires macOS and Xcode.
 
-Conversion is performed in the page using browser APIs. No file contents are sent over the network. For maximum offline use, serve the repository locally or package it with a static desktop shell.
+## Offline and security model
+
+No cloud conversion APIs are used. Applications do not execute input files, preserve source files, reject unsupported encrypted PDFs, avoid silent overwrites, and cleanly report missing optional tooling. See `docs/SECURITY.md`.
+
+## Known limitations
+
+Flutter and platform packaging require their native SDKs. High-fidelity DOCX/PDF and OCR workflows depend on optional local tools. iOS artifacts cannot be produced on Linux.
